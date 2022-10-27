@@ -6,7 +6,7 @@ from django.http import JsonResponse
 
 class AutomobileVOListEncoder(ModelEncoder):
     model = AutomobileVO
-    properties = ["vin"]
+    properties = ["vin","id", "sold"]
 
 
 class SalespersonListEncoder(ModelEncoder):
@@ -16,7 +16,7 @@ class SalespersonListEncoder(ModelEncoder):
 
 class SalespersonDetailEncoder(ModelEncoder):
     model = Salesperson
-    properties = ["name", "employee_id",]
+    properties = ["name", "employee_id","id",]
 
 
 class CustomerListEncoder(ModelEncoder):
@@ -26,25 +26,35 @@ class CustomerListEncoder(ModelEncoder):
 
 class CustomerDetailEncoder(ModelEncoder):
     model = Customer
-    properties = ["name", "address", "phone_number",]
+    properties = ["name", "address", "phone_number","id",]
 
 
 class SalesRecordDetailEncoder(ModelEncoder):
     model = SalesRecord
-    properties = ["automobile", "salesperson", "customer", "price"]
+    properties = ["automobile", "salesperson", "customer","price","id",]
     encoders = {
         "automobile" : AutomobileVOListEncoder(),
         "salesperson" : SalespersonDetailEncoder(),
         "customer" :CustomerDetailEncoder(),
     }
 
-@require_http_methods(["GET"])
+@require_http_methods(["GET", "PUT"])
 def api_list_automobilevo(request):
     if request.method == "GET":
         automobilevos = AutomobileVO.objects.all()
         return JsonResponse(
             {"automobilevos": automobilevos},
             encoder=AutomobileVOListEncoder,
+        )
+    else:
+        content = json.loads(request.body)
+        auto = AutomobileVO.objects.get(vin=content["vin"])
+        setattr(auto, "sold", True)
+        auto.save()
+        return JsonResponse(
+            auto,
+            encoder=AutomobileVOListEncoder,
+            safe=False,
         )
 
 

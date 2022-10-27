@@ -15,8 +15,8 @@ function Nav() {
               <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Sales</a>
               <ul className="dropdown-menu">
                 <li><NavLink className="dropdown-item" to="/customers/new">Add a new customer</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/salespersons/new">Add a new salesperson</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/salesrecords/new">Add a new salesrecord</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/salespersons/new">Add a new sales person</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/salesrecords/new">Add a new sales record</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/salespersons">Sales Person's Sale History</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/salesrecords">Sales Records</NavLink></li>
               </ul>

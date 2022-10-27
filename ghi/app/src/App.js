@@ -3,10 +3,9 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import CustomerForm from './CustomerForm';
 import SalesPersonForm from './SalesPersonForm';
-// import SalesRecordForm from './SalesRecordForm';
+import SalesRecordForm from './SalesRecordForm';
 import SalesRecordList from './SalesRecordList';
 // import SalesPersonsSalesHistoryList from './SalesPersonsSalesHistoryList';
-
 import AppointmentsList from './Service/AppointmentsList';
 import VinHistory from './Service/VinHistory';
 import AppointmentForm from './Service/AppointmentForm';
@@ -32,7 +31,7 @@ function App() {
           </Route>
           <Route path="salesrecords">
             <Route path="" element={<SalesRecordList />} />
-            {/* <Route path="new" element={<SalesRecordForm />} /> */}
+            <Route path="new" element={<SalesRecordForm />} />
           </Route>
           <Route path="appointments">
             <Route index element={<AppointmentsList />} />

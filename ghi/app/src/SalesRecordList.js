@@ -1,15 +1,14 @@
 import React from 'react';
 
-class  SalesRecordsList extends React.Component {
+class SalesRecordsList extends React.Component {
     constructor(props){
       super(props)
       this.state = {
         "salesrecords": [],
       }
-      this.dlt = this.dlt.bind(this)
-      this.refresh = this.refresh.bind(this)
+
     }
-      async refresh(){
+    async componentDidMount() {
         const url = 'http://localhost:8090/api/salesrecords/'
         const response = await fetch(url)
         if (response.ok){
@@ -17,24 +16,8 @@ class  SalesRecordsList extends React.Component {
           this.setState({ salesrecords: data.salesrecords})
         }
       }
-      async componentDidMount(){
-        this.refresh()
-      }
-      async dlt(event){
-        const url =`http://localhost:8090/api/salesrecords/${event}/`
-        const fetchConfig = {
-          method : "delete",
-          headers : {
-            "Content-Type": "application/json"
-          }
-        }
-        await fetch (url, fetchConfig)
-        this.refresh()
-
-      }
 
     render(){
-
 
     return (
       <div className="container">
@@ -54,12 +37,7 @@ class  SalesRecordsList extends React.Component {
                   <td>{ salesrecord.salesperson.name}</td>
                   <td>{ salesrecord.customer.name }</td>
                   <td>{ salesrecord.automobile.vin }</td>
-                  <td>{ salesrecord.price }</td>
-                  <td>
-                  <form>
-                    <button onClick={() => this.dlt(salesrecord.id)}>Delete</button>
-                  </form>
-                  </td>
+                  <td>${ new Intl.NumberFormat().format(salesrecord.price) }</td>
                 </tr>
               )
             })}
