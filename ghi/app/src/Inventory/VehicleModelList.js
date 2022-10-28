@@ -46,5 +46,4 @@ class VehicleModelList extends React.Component {
         );
     }
 }
-
 export default VehicleModelList;

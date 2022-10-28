@@ -53,5 +53,4 @@ class ManufacturerForm extends React.Component {
         );
     }
 }
-
 export default ManufacturerForm;

@@ -48,5 +48,4 @@ class AutomobileList extends React.Component {
         );
     }
 }
-
 export default AutomobileList;

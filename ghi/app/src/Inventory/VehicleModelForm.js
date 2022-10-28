@@ -95,5 +95,4 @@ class VehicleModelForm extends React.Component {
     );
   }
 }
-
 export default VehicleModelForm;

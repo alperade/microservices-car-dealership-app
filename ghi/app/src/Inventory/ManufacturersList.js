@@ -41,5 +41,4 @@ class  ManufacturersList extends React.Component {
     );
   };
 }
-
 export default ManufacturersList;
