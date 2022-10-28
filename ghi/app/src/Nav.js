@@ -17,7 +17,7 @@ function Nav() {
                 <li><NavLink className="dropdown-item" to="/customers/new">Add a new customer</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/salespersons/new">Add a new sales person</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/salesrecords/new">Add a new sales record</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/salespersons">Sales Person's Sale History</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/salespersons/history">Sales History</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/salesrecords">Sales Records</NavLink></li>
               </ul>
             </li>
@@ -34,7 +34,10 @@ function Nav() {
               <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Inventory</a>
               <ul className="dropdown-menu">
                 <li><NavLink className="dropdown-item" to="/inventory/manufacturers">Manufacturers</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/inventory/create-manufacturers">Add a Manufacturers</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/inventory/models">Vehicle Models</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/inventory/create-model">Add a Vehicle Model</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/inventory/automobile">Automobile</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/inventory/create-automobile">Add an Automobile Model</NavLink></li>
               </ul>
             </li>

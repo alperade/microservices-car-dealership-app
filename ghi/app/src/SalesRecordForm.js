@@ -11,25 +11,23 @@ class SalesRecordForm extends React.Component {
             automobiles: [],
             salespersons: [],
             customers: [],
-
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeAutomobile = this.handleChangeAutomobile.bind(this);
         this.handleChangeSalesperson = this.handleChangeSalesperson.bind(this);
         this.handleChangeCustomer = this.handleChangeCustomer.bind(this);
         this.handleChangePrice = this.handleChangePrice.bind(this);
+        this.loadAutos = this.loadAutos.bind(this);
     }
 
     async loadAutos() {
         const url = 'http://localhost:8090/api/automobilevos/';
         const response = await fetch(url);
-        console.log('response', response)
         if (response.ok) {
             const data = await response.json();
-            console.log('data', data)
             this.setState({ automobiles: data.automobilevos.filter( automobilevo => automobilevo.sold === false) });
-            }
         }
+    }
 
     async loadSalesPersons() {
         const url = 'http://localhost:8090/api/salespersons/';
@@ -37,8 +35,8 @@ class SalesRecordForm extends React.Component {
         if (response.ok) {
             const data = await response.json();
             this.setState({ salespersons: data.salespersons });
-            }
         }
+    }
 
     async loadsCustomers() {
         const url = 'http://localhost:8090/api/customers/';
@@ -46,8 +44,8 @@ class SalesRecordForm extends React.Component {
         if (response.ok) {
             const data = await response.json();
             this.setState({ customers: data.customers });
-            }
         }
+    }
 
     async componentDidMount(){
         this.loadAutos();
@@ -90,6 +88,7 @@ class SalesRecordForm extends React.Component {
                 price: '',
             });
         }
+        this.loadAutos();
     }
 
     handleChangeAutomobile(event) {

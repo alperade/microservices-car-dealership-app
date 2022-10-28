@@ -17,8 +17,7 @@ class CustomerForm extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = {...this.state};
-
-        const customerUrl = 'http://localhost:8090/api/customers/';
+        const url = 'http://localhost:8090/api/customers/';
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -26,9 +25,8 @@ class CustomerForm extends React.Component {
                 'Content-Type' : 'application/json',
             },
         };
-        const customerresponse = await fetch(customerUrl, fetchConfig);
-        if (customerresponse.ok){
-
+        const response = await fetch(url, fetchConfig);
+        if (response.ok){
             this.setState({
                 name: '',
                 address: '',
@@ -39,17 +37,20 @@ class CustomerForm extends React.Component {
 
     handleChangeName(event) {
         const value = event.target.value;
-        this.setState({ name: value });
+        const name = event.target.name;
+        this.setState({[name]: value });
     }
 
     handleChangeAddress(event) {
         const value = event.target.value;
-        this.setState({address: value});
+        const address = event.target.name;
+        this.setState({[address]: value});
     }
 
     handleChangePhone_number(event) {
         const value = event.target.value;
-        this.setState({phone_number: value});
+        const phone_number = event.target.name;
+        this.setState({[phone_number]: value});
     }
 
     render() {
@@ -68,7 +69,7 @@ class CustomerForm extends React.Component {
                                 <label htmlFor="address">Address</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleChangePhone_number} value={this.state.phone_number} placeholder="Phone_number" required type="text" name="phone_number" id="phone_number" className="form-control" />
+                                <input onChange={this.handleChangePhone_number} value={this.state.phone_number} placeholder="Phone_number" required type="text" name="phone_number" id ="phone_number" className="form-control" />
                                 <label htmlFor="phone_number">Phone number</label>
                             </div>
                             <button className="btn btn-primary">Create</button>

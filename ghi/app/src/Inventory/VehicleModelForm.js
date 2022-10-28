@@ -25,7 +25,7 @@ class VehicleModelForm extends React.Component {
 
   handleChange(event) {
       const newState = {};
-      newState[event.target.id] = event.target.value;
+      newState[event.target.name] = event.target.value;
       this.setState(newState);
   }
 
@@ -64,19 +64,19 @@ class VehicleModelForm extends React.Component {
             <form onSubmit={this.handleSubmit} id="create-model-form">
               <div className="form-floating mb-3">
                 <input onChange={this.handleChange} placeholder="Name" required
-                  value={this.state.name} type="text" name="name" id="name"
+                  value={this.state.name} type="text" name="name"
                   className="form-control" />
                 <label htmlFor="name">Name</label>
               </div>
                 <div className="form-floating mb-3">
                   <input  onChange={this.handleChange} placeholder="Picture URL" required
-                    value={this.state.picture_url} type="url" name="picture_url" id="picture_url"
+                    value={this.state.picture_url} type="url" name="picture_url"
                     className="form-control" />
                   <label htmlFor="picture_url">Picture URL</label>
                 </div>
                 <div className="mb-3">
                   <select onChange={this.handleChange} required name="manufacturer"
-                    value={this.state.manufacturer} id="manufacturer" className="form-select">
+                    value={this.state.manufacturer} className="form-select">
                   <option value="">Choose a manufacturer</option>
                   {this.state.manufacturers.map(manufacturer => {
                     return (

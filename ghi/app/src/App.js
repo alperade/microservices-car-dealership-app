@@ -5,7 +5,7 @@ import CustomerForm from './CustomerForm';
 import SalesPersonForm from './SalesPersonForm';
 import SalesRecordForm from './SalesRecordForm';
 import SalesRecordList from './SalesRecordList';
-// import SalesPersonsSalesHistoryList from './SalesPersonsSalesHistoryList';
+import SalesHistoryList from './SalesHistoryList';
 import AppointmentsList from './Service/AppointmentsList';
 import VinHistory from './Service/VinHistory';
 import AppointmentForm from './Service/AppointmentForm';
@@ -13,7 +13,9 @@ import TechnicianForm from './Service/TechnicianForm';
 import ManufacturersList from './Inventory/ManufacturersList';
 import VehicleModelForm from './Inventory/VehicleModelForm';
 import AutomobileForm from './Inventory/AutomobileForm';
-
+import ManufacturersForm from './Inventory/ManufacturersForm';
+import VehicleModelList from './Inventory/VehicleModelList';
+import AutomobileList from './Inventory/AutomobileList';
 
 function App() {
   return (
@@ -26,7 +28,7 @@ function App() {
             <Route path="new" element={<CustomerForm />} />
           </Route>
           <Route path="salespersons">
-          {/* <Route element={<SalesPersonsSalesHistoryList />} /> */}
+            <Route path="history" element={<SalesHistoryList />} />
             <Route path="new" element={<SalesPersonForm />} />
           </Route>
           <Route path="salesrecords">
@@ -42,9 +44,12 @@ function App() {
             <Route path='new' element={<TechnicianForm />} />
           </Route>
           <Route path="inventory">
+            <Route path='create-manufacturers' element={<ManufacturersForm />} />
             <Route path='manufacturers' element={<ManufacturersList />} />
             <Route path='create-model' element={<VehicleModelForm />} />
+            <Route path='models' element={<VehicleModelList />} />
             <Route path='create-automobile' element={<AutomobileForm />} />
+            <Route path='automobile' element={<AutomobileList/>} />
           </Route>
         </Routes>
       </div>
