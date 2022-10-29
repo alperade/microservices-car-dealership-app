@@ -3,7 +3,7 @@
 Team:
 
 * Person 1 - Which microservice? Alper Ademoglu - Service
-* Person 2 - Which microservice?
+* Person 2 - Which microservice? David Leung - Sales
 
 ## Design
 
@@ -25,3 +25,9 @@ React frontend for the Service microservice shows a list of service appointments
 
 Explain your models and integration with the inventory
 microservice, here.
+
+The AutomobileVO model is a value object from the Automobile model from Inventory. This allows access to the vin property and attaching a sold property without affect the Automobile model in the Inventory API and allows us to monitor whether a vehicle is sold or not. The sold property defaults to false and turns to true if it is sold. Vin gets set to unique = True to make sure there aren't any duplicate vehicles.
+Salesperson model has the properties name and employee id and customer model has the properties name, address and phone number. The phone number and the employee id has unique = true to prevent duplicates.
+In the model sales record, those three models are foreign keys connect to each of the previous models. When deleting the sales record, the automobile, salesperson and customer are protected from deletion. There is also a price property on the model sales record.
+
+In the inventory api, Automobile is a foreign key to vehicle model which is another foreign key to manufacturer. This can be seen on the Carcar diagram.png. In order generate a sales form, a manufacturer has to be generated first. The name of the manufacturer is used in the vehicle model form. In turn, the name of the vehicle model is used in the automobile form. Creating automobile value object, the model automobile in the inventory isn't directly affect by changes within the sales bound context. The sales record form obtains information from all three models that are foreign keys with it to generate a sales record. Once the sales record is created, a put request in generated to change the sold property in Automobile VO to change it from false to true. This prevents the same automobile from being sold again.
