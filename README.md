@@ -1,10 +1,5 @@
 # CarCar
 
-Team:
-
-* Person 1 - Which microservice? Alper Ademoglu - Service
-* Person 2 - Which microservice? David Leung - Sales
-
 ## Design
 
 CarCar is a web application for automobile dealership management that keeps track of automobile inventory, sales and service appointments. The application consists of three microservices; inventory, service and sales. The service and sales microservices poll API data from the inventory microservice.
